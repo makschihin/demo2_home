@@ -4,8 +4,6 @@
   connection: local
   become: yes
   gather_facts: true
-  vars:
-  sonar_version: 8.9
   roles:
     - role: postgresql
     - role: geerlingguy.java

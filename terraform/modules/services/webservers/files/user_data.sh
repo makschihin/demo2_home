@@ -2,7 +2,7 @@
   sudo apt update -y \
   && sudo apt-add-repository --yes --update ppa:ansible/ansible \
   && sudo apt update -y \
-  && sudo apt-get install git software-properties-common ansible -y \
+  && sudo apt-get install git software-properties-common ansible unzip -y \
   && sudo apt-get install openjdk-8-jdk -y \
   && sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y \
   && wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - \

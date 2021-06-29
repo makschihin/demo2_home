@@ -3,6 +3,11 @@
 #############################################################################
 provider "aws" {
   region = "us-east-2"
+  default_tags {
+   tags = {
+     ita_group = "Dp_206"
+   }
+ }
 }
 
 #############################################################################
@@ -17,7 +22,7 @@ resource "aws_instance" "ubuntu_instance" {
   user_data              = var.user_data
   tags = {
     Name      = "${var.cluster_name}"
-    ita_group = "Dp_206"
+
   }
 }
 
@@ -39,9 +44,6 @@ resource "aws_security_group" "http" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = {
-    ita_group = "Dp_206"
-    }
 }
 
 #############################################################################
@@ -51,8 +53,8 @@ resource "aws_security_group" "sonar" {
   name = "${var.cluster_name}-sonar-sg"
   vpc_id = aws_vpc.demo2-vpc.id
   ingress {
-    from_port   = var.server_port
-    to_port     = var.server_port
+    from_port   = var.sonar_port
+    to_port     = var.sonar_port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -62,9 +64,7 @@ resource "aws_security_group" "sonar" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = {
-    ita_group = "Dp_206"
-    }
+
 }
 
 #############################################################################
@@ -85,9 +85,7 @@ resource "aws_security_group" "ssh" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = {
-    ita_group = "Dp_206"
-    }
+
 }
 
 #############################################################################
@@ -166,7 +164,5 @@ resource "aws_route_table_association" "demo2-crta-public-subnet-1"{
 resource "aws_key_pair" "ec2key" {
   key_name = "publicKey"
   public_key = file(var.public_key_path)
-  tags = {
-    ita_group = "Dp_206"
-    }
+
 }

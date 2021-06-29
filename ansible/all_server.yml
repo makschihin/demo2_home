@@ -6,8 +6,6 @@
   gather_facts: true
   vars:
   sonar_version: 8.9
-  sonar_db_user: "sonar"
-  sonar_db_pass: "sonar"
   roles:
     - role: postgresql
     - role: geerlingguy.java

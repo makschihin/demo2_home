@@ -11,5 +11,5 @@
   && sudo apt-get install jenkins -y \
   && sudo service jenkins start \
   && git clone https://github.com/makschihin/demo2_home.git /opt/demo2_home \
-  && ansible-playbook --connection=local  /opt/demo2_home/terraform/ansible/all_server.yml \
+  && ansible-playbook --connection=local  /opt/demo2_home/ansible/all_server.yml \
   && sudo echo "hello" >> /home/ubuntu/hello.txt

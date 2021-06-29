@@ -10,6 +10,6 @@
   && sudo apt-get update -y \
   && sudo apt-get install jenkins -y \
   && sudo service jenkins start \
-  && git clone https://github.com/Chmokachka/Dp-206-DevOps-Home.git /opt/home \
-  && ansible-playbook --connection=local  /opt/home/terraform-home/ansible/all_server.yml \
+  && git clone https://github.com/makschihin/demo2_home.git /opt/demo2_home \
+  && ansible-playbook --connection=local  /opt/demo2_home/ansible/all_server.yml \
   && sudo echo "hello" >> /home/ubuntu/hello.txt

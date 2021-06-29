@@ -1,0 +1,48 @@
+---
+- name: Updates apt cache
+  apt: update_cache=true
+
+- name: Postgresql | install postgresql packages.
+  apt:
+    name:
+      - postgresql
+      - postgresql-server-dev*
+      - python-pip
+    state: latest
+    autoclean: yes
+
+- pip:
+    name: psycopg2
+
+- name: Remove file /etc/postgresql/10/main/pg_hba.conf
+  file:
+    path: /etc/postgresql/10/main/pg_hba.conf
+    state: absent
+
+- name: Copy file pg_hba.conf
+  copy:
+    src: pg_hba.conf
+    dest: /etc/postgresql/10/main/pg_hba.conf
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: Restart postgresql.
+  service:
+    name: postgresql
+    state: restarted
+
+- name: Create jenkins user role.
+  postgresql_user:
+    name: jenkins
+    role_attr_flags: SUPERUSER
+
+- name: Create sonarqube user role.
+  postgresql_user:
+    name: sonar
+    role_attr_flags: SUPERUSER
+
+- name: Restart postgresql
+  service:
+    name: postgresql
+    state: restarted

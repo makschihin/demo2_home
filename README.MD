@@ -90,8 +90,11 @@ Ansible start configure your server in automatic mode
 
 Ansible contains some roles:
 Role "java" - install java on server
+
 Role "postgres" - install postgres DB on server, create role for jenkins user, sonarqube user.
+
 Role "jenkins" - create user jenkis, group jenkins.
 
 File "all_server.yml" - contains roles what will be run at server.
+
 File "sonar.yml" - use role from Ansible Galaxy to install sonarqube.

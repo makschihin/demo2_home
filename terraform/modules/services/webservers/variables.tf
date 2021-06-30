@@ -25,12 +25,6 @@ variable "server_port" {
   default     = 8080
 }
 
-variable "sonar_port" {
-  description = "The port the sonar will be listening"
-  type        = number
-  default     = 9000
-}
-
 variable "ssh_server_port" {
   description = "The port to ssh server"
   type        = number

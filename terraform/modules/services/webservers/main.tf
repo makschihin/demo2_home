@@ -46,26 +46,6 @@ resource "aws_security_group" "http" {
   }
 }
 
-#############################################################################
-# Security group server (sonarlisten port)
-#############################################################################
-resource "aws_security_group" "sonar" {
-  name = "${var.cluster_name}-sonar-sg"
-  vpc_id = aws_vpc.demo2-vpc.id
-  ingress {
-    from_port   = var.sonar_port
-    to_port     = var.sonar_port
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-}
 
 #############################################################################
 # Security group server (ssh listen port)

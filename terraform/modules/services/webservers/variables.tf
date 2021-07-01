@@ -16,7 +16,7 @@ variable "secret_key" {
 ###############################
 variable "public_key_path" {
   description = "Public key path"
-  default = "~/.ssh/test.pub"
+  default = "~/.ssh/demo2_home.pub"
 }
 
 variable "server_port" {

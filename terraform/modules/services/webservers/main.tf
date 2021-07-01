@@ -17,7 +17,7 @@ resource "aws_instance" "ubuntu_instance" {
   ami                    = "ami-0b9064170e32bde34"
   subnet_id              = aws_subnet.demo2-public-1.id
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.http.id, aws_security_group.ssh.id, aws_security_group.sonar.id]
+  vpc_security_group_ids = [aws_security_group.http.id, aws_security_group.ssh.id]
   key_name               = aws_key_pair.ec2key.key_name
   user_data              = var.user_data
   tags = {
